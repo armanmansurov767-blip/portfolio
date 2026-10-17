@@ -41,7 +41,7 @@ npx @google/clasp push --force
 ```
 
 ```bash
-npx @google/clasp update-deployment AKfycbxv3OaTNuD0X5vO7V1fnPqQSZQjDmShiuQlDrmNuW0bTaD-Y3SO845kL0bkehQ2humw6w
+npx @google/clasp update-deployment AKfycbzcLJiIB0ZigJLpWGBKh_FzPbdOPq4JEjxtXb-MYDmLY4kWwItcIVL3ltcD0PUlSKvIGw
 ```
 
 Адрес для сайта при этом не меняется.

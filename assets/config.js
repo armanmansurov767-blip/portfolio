@@ -8,5 +8,5 @@ window.PORTFOLIO = {
   whatsapp: '',
   // Куда форма «Обсудить сайт» отправляет заявку: Google-скрипт пишет её в таблицу и шлёт письмо.
   // Как устроено — google-apps-script/README.md
-  leadsEndpoint: 'https://script.google.com/macros/s/AKfycbxv3OaTNuD0X5vO7V1fnPqQSZQjDmShiuQlDrmNuW0bTaD-Y3SO845kL0bkehQ2humw6w/exec',
+  leadsEndpoint: 'https://script.google.com/macros/s/AKfycbzcLJiIB0ZigJLpWGBKh_FzPbdOPq4JEjxtXb-MYDmLY4kWwItcIVL3ltcD0PUlSKvIGw/exec',
 };
