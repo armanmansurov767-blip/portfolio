@@ -613,6 +613,15 @@ html.js .is-ready .case-title .line > span { transform: none; }
 .letter .btn--line::before { background: #fff; }
 .letter .btn--line:hover, .letter .btn--line:focus-visible { color: var(--cobalt); }
 .letter__note { color: #c9cfff; font-size: 0.9375rem; min-height: 1.5em; }
+.letter__note.is-ok { color: #fff; font-weight: 500; }
+.letter__alt { display: grid; gap: 6px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.24); color: #c9cfff; font-size: 0.9375rem; }
+.letter__links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.letter__links .link { color: #fff; font: inherit; }
+.letter .btn[aria-busy="true"] { opacity: 0.7; cursor: progress; }
+.field__err { min-height: 0; color: #c0261a; font-size: 0.9375rem; }
+.field__err:empty { display: none; }
+.field input[aria-invalid="true"] { border-color: #c0261a; }
+.trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 @media (min-width: 960px) {
   .brief__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr); }
   .letter { position: sticky; top: calc(var(--bar) + 24px); }

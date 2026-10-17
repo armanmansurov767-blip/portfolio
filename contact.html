@@ -25,7 +25,7 @@
   <header class="brief-head" data-theme="paper">
     <div class="wrap">
       <h1 class="h-xl">Обсудим ваш сайт</h1>
-      <p class="lede muted">Ответьте на четыре вопроса, и из ответов соберётся готовое письмо. Останется отправить его удобным способом. Цена и сроки договорные: обсудим их в ответе.</p>
+      <p class="lede muted">Ответьте на несколько вопросов, и из ответов соберётся заявка. Нажмите «Отправить заявку» — она придёт мне, и я свяжусь с вами. Цена и сроки договорные: обсудим их в ответе.</p>
     </div>
   </header>
 
@@ -70,24 +70,34 @@
         <div class="field-row">
           <div class="field">
             <label for="who">Как вас зовут</label>
-            <input id="who" name="who" type="text" autocomplete="name">
+            <input id="who" name="who" type="text" autocomplete="name" required maxlength="80" aria-describedby="whoErr">
+            <p class="field__err" id="whoErr"></p>
           </div>
           <div class="field">
             <label for="reach">Как с вами связаться</label>
-            <input id="reach" name="reach" type="text" placeholder="Телефон, Telegram или почта">
+            <input id="reach" name="reach" type="text" placeholder="Телефон, Telegram или почта" required maxlength="120" aria-describedby="reachErr">
+            <p class="field__err" id="reachErr"></p>
           </div>
         </div>
+        <!-- Ловушка для спам-ботов: человек это поле не видит -->
+        <div class="trap" aria-hidden="true"><label>Сайт <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
       </form>
 
-      <aside class="letter" aria-label="Готовое письмо">
-        <p class="letter__text" id="letter" aria-live="polite"></p>
+      <aside class="letter" aria-label="Ваша заявка">
+        <p class="letter__text" id="letter"></p>
         <div class="letter__send">
-          <a class="btn" id="sendMail" href="#">Отправить письмом</a>
-          <a class="btn btn--line" id="sendTg" href="#" target="_blank" rel="noopener" hidden>В Telegram</a>
-          <a class="btn btn--line" id="sendWa" href="#" target="_blank" rel="noopener" hidden>В WhatsApp</a>
-          <button class="btn btn--line" id="copy" type="button">Скопировать текст</button>
+          <button class="btn" id="send" type="submit" form="brief">Отправить заявку</button>
         </div>
-        <p class="letter__note" id="note" role="status"></p>
+        <p class="letter__note" id="note" role="status" aria-live="polite"></p>
+        <div class="letter__alt">
+          <p>Или отправьте этот текст сами:</p>
+          <div class="letter__links">
+            <a class="link" id="sendMail" href="#">почтой</a>
+            <a class="link" id="sendTg" href="#" target="_blank" rel="noopener" hidden>в Telegram</a>
+            <a class="link" id="sendWa" href="#" target="_blank" rel="noopener" hidden>в WhatsApp</a>
+            <button class="link" id="copy" type="button">скопировать текст</button>
+          </div>
+        </div>
       </aside>
     </div>
   </section>
