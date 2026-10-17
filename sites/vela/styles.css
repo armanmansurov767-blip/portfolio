@@ -1,0 +1,354 @@
+/* =========================================================
+   Vela 14 — стили
+   Без класса .live на <html> страница — обычный статичный текст.
+   Класс .live добавляет js/main.js, когда 3D-сцена готова.
+   ========================================================= */
+:root {
+  --black: #000;
+  --ink: #0b0b0d;
+  --mist: #a1a6ad;
+  --soft: #d2d5da;
+  --white: #f5f5f7;
+  --copper: #f0a06a;
+  --line: rgba(245, 245, 247, 0.16);
+
+  --display: "Inter Tight", "Inter", system-ui, sans-serif;
+  --body: "Inter", system-ui, sans-serif;
+  --gutter: clamp(20px, 4vw, 64px);
+  --bar: 56px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+body {
+  margin: 0;
+  background: var(--black);
+  color: var(--white);
+  font: 400 1.0625rem/1.5 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, p, ol, ul, dl, dd { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--white); outline-offset: 3px; border-radius: 3px; }
+::selection { background: rgba(240, 160, 106, 0.4); }
+
+/* ---------- Шапка ---------- */
+.top {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 20;
+  height: var(--bar);
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2.4vw, 32px);
+  background: linear-gradient(rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0));
+}
+.wordmark {
+  font: 700 1.25rem/1 var(--display);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+.top-link {
+  margin-left: auto;
+  font-size: 0.875rem;
+  color: var(--soft);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.top-link:hover { color: var(--white); }
+
+.rail, .rail-now { display: none; }
+.live .rail { display: block; flex: 1 1 0; max-width: 440px; margin-left: auto; }
+.live .rail ol { display: flex; gap: 4px; }
+.live .rail li { flex: 1 1 0; }
+.live .rail a { display: block; padding: 14px 0; }
+.live .rail a::before {
+  content: "";
+  display: block;
+  height: 2px;
+  border-radius: 1px;
+  background: rgba(245, 245, 247, 0.22);
+  transition: background-color 0.3s;
+}
+.live .rail a:hover::before { background: rgba(245, 245, 247, 0.6); }
+.live .rail a.is-past::before,
+.live .rail a.is-now::before { background: var(--white); }
+.live .rail span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.live .rail-now {
+  display: block;
+  min-width: 7.5em;
+  font-size: 0.875rem;
+  color: var(--soft);
+}
+.live .top-link { margin-left: 0; }
+
+/* ---------- История: статичный вид ---------- */
+.stage { padding-top: var(--bar); }
+#scene, .leaders, .scroll-hint { display: none; }
+
+.chapter { padding: 9vh var(--gutter); max-width: 46rem; }
+.copy h1 {
+  font: 700 clamp(3.5rem, 10vw, 8.5rem)/0.95 var(--display);
+  letter-spacing: -0.035em;
+  margin-bottom: 0.14em;
+  background: linear-gradient(180deg, #ffffff 30%, #a9afb8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.copy h2 {
+  font: 600 clamp(2rem, 3.6vw, 3.5rem)/1.06 var(--display);
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+  margin-bottom: 0.45em;
+}
+.copy p { color: var(--mist); max-width: 34ch; text-wrap: pretty; }
+.copy .lede { font-size: clamp(1.0625rem, 1.5vw, 1.375rem); line-height: 1.4; max-width: 34ch; color: var(--soft); }
+
+.text-link {
+  display: inline-block;
+  margin-top: 1.1em;
+  color: var(--copper);
+  text-underline-offset: 0.3em;
+  text-decoration-thickness: 1px;
+}
+.text-link:hover { text-decoration-thickness: 2px; }
+
+.parts { margin-top: 1.6rem; display: grid; gap: 0.7rem; }
+.part strong { display: block; font-weight: 600; font-size: 0.9375rem; line-height: 1.3; }
+.part span { display: block; font-size: 0.8125rem; line-height: 1.35; color: var(--mist); }
+
+/* ---------- История: живой вид ---------- */
+.live .story {
+  /* --n и --k задаёт js/main.js: число глав и длина прокрутки на главу */
+  height: calc((var(--n) - 1) * var(--k) * 100vh + 100vh);
+  height: calc((var(--n) - 1) * var(--k) * 100svh + 100svh);
+}
+.live .stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  padding: 0;
+  overflow: hidden;
+  background: radial-gradient(70% 60% at 58% 56%, #17181c 0%, #08080a 55%, #000 100%);
+}
+.live #scene {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+.live #scene.is-ready { opacity: 1; }
+.live .leaders {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+  overflow: visible;
+}
+.leaders line { stroke: rgba(245, 245, 247, 0.7); stroke-width: 1; }
+.leaders circle { fill: var(--white); stroke: rgba(0, 0, 0, 0.75); stroke-width: 2; }
+
+/* Затемнение под текстом слева; --scrim задаёт js/main.js — в начале и в конце его нет */
+.live .stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.7) 26%, rgba(0, 0, 0, 0) 50%);
+  opacity: var(--scrim, 0);
+  pointer-events: none;
+}
+
+.live .chapter { padding: 0; max-width: none; }
+
+.live .copy {
+  position: absolute;
+  z-index: 4;
+  left: var(--gutter);
+  top: 50%;
+  width: min(27rem, 31vw);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(var(--cx, 0%), calc(var(--cy, -50%) + var(--drift, 0px)));
+  will-change: transform, opacity;
+}
+/* Начало: название и подзаголовок по центру над ноутбуком */
+.live .chapter--hero .copy {
+  --cx: -50%;
+  --cy: 0%;
+  left: 50%;
+  top: clamp(76px, 12svh, 132px);
+  width: min(52rem, calc(100% - 2 * var(--gutter)));
+  text-align: center;
+  opacity: 1;
+  visibility: visible;
+}
+.live .chapter--hero .copy p { margin-inline: auto; }
+.live .chapter--final .copy {
+  --cx: -50%;
+  --cy: 0%;
+  left: 50%;
+  top: auto;
+  bottom: clamp(40px, 9svh, 96px);
+  width: min(34rem, calc(100% - 2 * var(--gutter)));
+  text-align: center;
+}
+.live .chapter--final .copy p { margin-inline: auto; }
+
+.live .parts { margin: 0; display: block; }
+.live .part {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  top: 0;
+  max-width: 13rem;
+  padding: 6px 11px 7px;
+  border-left: 1px solid rgba(245, 245, 247, 0.7);
+  background: rgba(0, 0, 0, 0.62);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.live .scroll-hint {
+  display: block;
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  bottom: clamp(20px, 4svh, 44px);
+  transform: translateX(-50%);
+  font-size: 0.875rem;
+  color: var(--mist);
+  padding-right: 20px;
+}
+.live .scroll-hint::after {
+  content: "";
+  position: absolute;
+  right: 3px;
+  top: 0.3em;
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+
+/* ---------- Характеристики ---------- */
+.specs {
+  padding: clamp(80px, 16vh, 180px) var(--gutter) clamp(64px, 12vh, 140px);
+  max-width: 64rem;
+  margin: 0 auto;
+}
+.specs h2 {
+  font: 700 clamp(2.5rem, 6vw, 5rem)/1 var(--display);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.7em;
+}
+.specs dl > div {
+  display: grid;
+  grid-template-columns: minmax(8rem, 15rem) 1fr;
+  gap: 0 2rem;
+  padding: 1.05rem 0;
+  border-top: 1px solid var(--line);
+}
+.specs dl > div:last-child { border-bottom: 1px solid var(--line); }
+.specs dt { color: var(--mist); }
+.specs dd { font-size: 1.125rem; line-height: 1.4; }
+
+.outro {
+  margin-top: clamp(48px, 9vh, 96px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+}
+.outro p { font: 600 clamp(1.5rem, 2.6vw, 2.25rem)/1.1 var(--display); letter-spacing: -0.02em; max-width: 22ch; }
+.button {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  background: var(--white);
+  color: #000;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+.button:hover { background: #fff; }
+
+.foot {
+  padding: 1.6rem var(--gutter) 2.2rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.4rem 2rem;
+  font-size: 0.8125rem;
+  color: var(--mist);
+}
+
+/* ---------- Узкие и вертикальные экраны: текст уходит вниз ---------- */
+@media (max-width: 899px), (max-aspect-ratio: 11/10) {
+  .live .top-link { display: none; }
+  .live .rail-now { min-width: 0; text-align: right; }
+
+  .live .stage { background: radial-gradient(110% 50% at 50% 40%, #17181c 0%, #08080a 60%, #000 100%); }
+  .live .stage::before { display: none; }
+  .live .stage::after {
+    content: "";
+    position: absolute;
+    inset: 46% 0 0 0;
+    z-index: 3;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.94) 58%);
+    opacity: var(--scrim, 0);
+    pointer-events: none;
+  }
+  .live .copy {
+    --cy: 0%;
+    left: var(--gutter);
+    right: var(--gutter);
+    top: auto;
+    bottom: clamp(28px, 6svh, 64px);
+    width: auto;
+  }
+  .live .chapter--hero .copy { left: 50%; right: auto; bottom: auto; top: clamp(76px, 11svh, 120px); width: calc(100% - 2 * var(--gutter)); }
+  .live .chapter--final .copy { --cx: 0%; left: var(--gutter); text-align: left; }
+  .live .chapter--final .copy p { margin-inline: 0; }
+  .copy h2 { font-size: clamp(1.75rem, 7.4vw, 2.75rem); }
+
+  .live .part { padding: 4px 8px 5px; max-width: 11rem; }
+  .live .part span { display: none; }
+  .live .part strong { font-size: 0.8125rem; }
+
+  .specs dl > div { grid-template-columns: 1fr; gap: 0.15rem; }
+  .specs dd { font-size: 1.0625rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live #scene, .live .rail a::before, .button { transition: none; }
+}

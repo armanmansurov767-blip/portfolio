@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Осенние туры 2026 — каталог | листва.</title>
+  <meta name="description" content="Каталог осенних туров из Казахстана: фильтры по региону, формату отдыха, месяцу и бюджету. Цены в тенге.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23121212'/%3E%3Ccircle cx='22' cy='22' r='4' fill='%23B5562B'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Onest:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="tours">
+  <header id="header" data-solid></header>
+  <main id="main">
+  <section class="phero">
+    <div class="phero__word" aria-hidden="true">туры</div>
+    <div class="wrap phero__in">
+      <nav class="crumbs"><a href="index.html">Главная</a>/<span>Туры</span></nav>
+      <span class="eyebrow eyebrow--leaf">Сезон «Осень 2026»</span>
+      <h1 class="h-display">Все осенние туры</h1>
+      <p class="lead">Восемь направлений, где осень раскрывается ярче всего. Отфильтруйте по формату отдыха, месяцу и бюджету — цены указаны за человека с перелётом.</p>
+    </div>
+  </section>
+  <section class="wrap">
+    <div class="filters reveal">
+      <div class="filters__row"><span class="filters__label">Регион</span><div class="pills" id="fRegion"></div></div>
+      <div class="filters__row"><span class="filters__label">Формат</span><div class="pills" id="fType"></div></div>
+      <div class="filters__row"><span class="filters__label">Месяц</span><div class="pills" id="fMonth"></div></div>
+      <div class="filters__bottom">
+        <label class="range"><span class="filters__label">Бюджет</span><input type="range" id="fBudget" min="250000" max="1700000" step="50000" value="1700000"><output id="fBudgetOut"></output></label>
+        <select class="select" id="fSort" aria-label="Сортировка">
+          <option value="pop">Сначала популярные</option>
+          <option value="asc">Сначала дешевле</option>
+          <option value="desc">Сначала дороже</option>
+          <option value="days">По длительности</option>
+        </select>
+      </div>
+    </div>
+    <p class="found" id="found"></p>
+    <div class="grid-tours grid-tours--3" id="catalog"></div>
+    <div class="empty" id="empty" hidden>
+      <h3 class="h-3">Под эти условия туров нет</h3>
+      <p class="muted">Попробуйте расширить бюджет или выбрать другой месяц — или соберём индивидуальный маршрут.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button class="btn" id="resetFilters">Сбросить фильтры</button><a class="btn btn--dark" href="about.html#contact">Индивидуальный тур</a></div>
+    </div>
+  </section>
+  </main>
+
+  <footer id="footer"></footer>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/leaves.js" defer></script>
+</body>
+</html>

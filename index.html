@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="ru" data-tone="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Арман Мансуров — сайты, которые хочется листать</title>
+  <meta name="description" content="Делаю сайты и чат-ботов для бизнеса: с характером, живой анимацией и заявками в вашу таблицу или мессенджер. Три работы, каждую можно открыть и полистать.">
+  <meta name="theme-color" content="#1f2ee0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f2ee0'/%3E%3Crect x='7' y='9' width='18' height='14' rx='2.5' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="preload" as="image" href="assets/shots/listva-long.webp">
+  <script>document.documentElement.classList.add('js')</script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script defer src="assets/config.js"></script>
+  <script defer src="assets/reviews.js"></script>
+  <script defer src="assets/site.js"></script>
+  <script defer src="assets/home.js"></script>
+  <script defer src="assets/botdemo.js"></script>
+</head>
+<body data-page="home">
+
+<main id="main">
+
+  <!-- Сцена: вступление и три работы -->
+  <section class="stage" id="works" data-theme="cobalt">
+
+    <div class="intro">
+      <h1 class="intro__title h-xl">
+        <span class="line"><span>Сайты,</span></span>
+        <span class="line"><span>которые</span></span>
+        <span class="line"><span>хочется</span></span>
+        <span class="line"><span>листать</span></span>
+      </h1>
+      <div class="intro__foot">
+        <p class="lede">Меня зовут Арман. Делаю сайты и чат-ботов для бизнеса: с характером, живой анимацией и заявками, которые приходят вам в таблицу или в мессенджер.</p>
+        <p class="intro__cue">Листайте вниз — три сайта листаются вместе с вами</p>
+      </div>
+    </div>
+
+    <article class="work" data-theme="listva">
+      <div class="work__copy">
+        <p class="work__kind">Турагентство осенних туров</p>
+        <h2 class="work__name">листва.</h2>
+        <p>Сайт, который продаёт осень. Листья падают прямо на первом экране, туры фильтруются по месяцу и бюджету, а цена пересчитывается на странице тура.</p>
+        <dl class="work__facts">
+          <div><dt>Страниц</dt><dd>5</dd></div>
+          <div><dt>Каталог</dt><dd>Фильтры по региону, формату, месяцу и бюджету</dd></div>
+          <div><dt>Заявки</dt><dd>В Google Таблицу и на почту</dd></div>
+        </dl>
+        <div class="work__links">
+          <a class="btn" href="listva.html">Открыть листву</a>
+          <a class="link" href="sites/listva/index.html" target="_blank" rel="noopener">Сайт в новой вкладке</a>
+        </div>
+      </div>
+      <a class="win" href="listva.html" data-cursor="Открыть" aria-label="листва. — открыть работу">
+        <div class="win__bar"><i></i><i></i><i></i><span class="win__tab">листва. — осенние туры за рубеж</span></div>
+        <div class="win__view"><img class="win__page" src="assets/shots/listva-long.webp" width="1440" height="6200" alt="Главная страница сайта «листва.»: ветка в осенних листьях, календарь сезона, карточки туров"></div>
+      </a>
+    </article>
+
+    <article class="work" data-theme="halden">
+      <div class="work__copy">
+        <p class="work__kind">Экспедиционное турагентство</p>
+        <h2 class="work__name">Halden</h2>
+        <p>Экспедиции на край света на тринадцати страницах. Крупные фотографии, спокойная тёмная палитра и форма, после которой заявка сразу попадает в таблицу.</p>
+        <dl class="work__facts">
+          <div><dt>Страниц</dt><dd>13</dd></div>
+          <div><dt>Разделы</dt><dd>Стихии, форматы путешествий, регионы</dd></div>
+          <div><dt>Заявки</dt><dd>В Google Таблицу и на почту</dd></div>
+        </dl>
+        <div class="work__links">
+          <a class="btn" href="halden.html">Открыть Halden</a>
+          <a class="link" href="sites/halden/index.html" target="_blank" rel="noopener">Сайт в новой вкладке</a>
+        </div>
+      </div>
+      <a class="win" href="halden.html" data-cursor="Открыть" aria-label="Halden — открыть работу">
+        <div class="win__bar"><i></i><i></i><i></i><span class="win__tab">Halden — экспедиции на край света</span></div>
+        <div class="win__view"><img class="win__page" src="assets/shots/halden-long.webp" width="1440" height="6200" alt="Главная страница сайта Halden: ледниковая река в вулканической долине, маршруты и регионы" loading="lazy"></div>
+      </a>
+    </article>
+
+    <article class="work" data-theme="vela">
+      <div class="work__copy">
+        <p class="work__kind">Презентация ноутбука в 3D</p>
+        <h2 class="work__name">Vela 14</h2>
+        <p>Ноутбук, который разбирается, пока вы листаете. Крышка открывается, девять слоёв расходятся, и у каждой детали подписано, за что она отвечает.</p>
+        <dl class="work__facts">
+          <div><dt>Глав</dt><dd>10, от открытия крышки до сборки</dd></div>
+          <div><dt>Модель</dt><dd>Трёхмерная, собрана кодом из отдельных деталей</dd></div>
+          <div><dt>Прокрутка</dt><dd>Вперёд — разбор, назад — сборка</dd></div>
+        </dl>
+        <div class="work__links">
+          <a class="btn" href="vela.html">Открыть Vela 14</a>
+          <a class="link" href="sites/vela/index.html" target="_blank" rel="noopener">Сайт в новой вкладке</a>
+        </div>
+      </div>
+      <a class="win" href="vela.html" data-cursor="Открыть" aria-label="Vela 14 — открыть работу">
+        <div class="win__bar"><i></i><i></i><i></i><span class="win__tab">Vela 14 — ультрабук в разборе</span></div>
+        <div class="win__view win__frames">
+          <img src="assets/shots/vela-0.webp" alt="Сайт Vela 14: закрытый ноутбук на чёрном фоне" loading="lazy">
+          <img src="assets/shots/vela-1.webp" alt="" loading="lazy">
+          <img src="assets/shots/vela-2.webp" alt="" loading="lazy">
+          <img src="assets/shots/vela-3.webp" alt="" loading="lazy">
+          <img src="assets/shots/vela-4.webp" alt="" loading="lazy">
+          <img src="assets/shots/vela-5.webp" alt="" loading="lazy">
+          <img src="assets/shots/vela-6.webp" alt="" loading="lazy">
+          <img src="assets/shots/vela-7.webp" alt="" loading="lazy">
+          <img src="assets/shots/vela-8.webp" alt="" loading="lazy">
+          <img src="assets/shots/vela-9.webp" alt="" loading="lazy">
+        </div>
+      </a>
+    </article>
+
+    <ol class="rail" aria-label="Работы на сцене">
+      <li><button type="button">листва.<i></i></button></li>
+      <li><button type="button">Halden<i></i></button></li>
+      <li><button type="button">Vela 14<i></i></button></li>
+    </ol>
+  </section>
+
+  <!-- С чем помогаю -->
+  <section class="helps" id="help" data-theme="paper">
+    <div class="wrap helps__grid">
+      <div class="helps__head">
+        <h2 class="h-l">С чем я помогаю</h2>
+        <p class="lede muted">Сайт и бот нужны не сами по себе, а чтобы убрать конкретную неприятность. Вот с какими приходят чаще всего.</p>
+      </div>
+      <ul class="asks">
+        <li>
+          <h3 class="h-m">Люди заходят на сайт и уходят</h3>
+          <p>Делаю сайт, на котором за десять секунд понятно, что вы предлагаете и куда нажать. Каталог, фильтры и расчёт цены ведут человека к заявке.</p>
+        </li>
+        <li>
+          <h3 class="h-m">Сайт выглядит как у всех</h3>
+          <p>Рисую вид под ваш продукт: свои цвета и шрифты, анимация по прокрутке. Если продукт нужно рассмотреть, как ноутбук в Vela 14, собираю трёхмерную модель.</p>
+        </li>
+        <li>
+          <h3 class="h-m">Заявки теряются в чатах и звонках</h3>
+          <p>Каждая заявка с формы попадает строкой в вашу Google Таблицу и письмом на почту. Видно, кто написал и когда.</p>
+        </li>
+        <li>
+          <h3 class="h-m">Менеджер отвечает на одни и те же вопросы</h3>
+          <p>Делаю чат-бота в мессенджере. Он показывает каталог, помогает выбрать, принимает заявку и отвечает на частые вопросы в любое время суток. Заявка сразу уходит менеджеру.</p>
+          <div class="channels">
+            <div>
+              <h4>Telegram</h4>
+              <p>Самый простой путь: запускается быстро, пользоваться ботом бесплатно. Подходит, если ваши клиенты уже пишут вам в Telegram.</p>
+            </div>
+            <div>
+              <h4>WhatsApp</h4>
+              <p>Через официальную платформу WhatsApp Business от Meta. Нужны бизнес-аккаунт Meta и отдельный номер, а Meta сама проверяет компанию, это занимает время. Помогу с настройкой и напишу бота.</p>
+            </div>
+          </div>
+          <p class="asks__note">Бот работает на сервере, это отдельный недорогой хостинг. Подберу и подключу.</p>
+          <a class="link" href="#bot">Попробовать бота прямо здесь</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Демо Telegram-бота Halden -->
+  <section class="botdemo" id="bot" data-theme="cobalt">
+    <div class="wrap botdemo__grid">
+      <div class="botdemo__text">
+        <h2 class="h-l">Поговорите с ботом прямо здесь</h2>
+        <p class="lede">Это копия Telegram-бота, которого я сделал для Halden. За минуту он собирает заявку: имя, телефон, экспедицию и даты. Кто не знает, куда хочет, проходит короткий тест, и бот советует экспедицию. Заявка сразу попадает в Google Таблицу и менеджеру в Telegram.</p>
+        <p class="botdemo__note">Нажимайте кнопки и пишите, как в настоящем Telegram. В демо заявка никуда не уходит: всё остаётся в вашем браузере.</p>
+        <div class="botdemo__links">
+          <a class="btn" href="https://t.me/halden_trips_bot" target="_blank" rel="noopener">Открыть бота в Telegram</a>
+        </div>
+      </div>
+
+      <div class="tg" id="tg">
+        <div class="tg__head">
+          <span class="tg__ava" aria-hidden="true">H</span>
+          <div><b>Halden</b><span class="tg__status">бот</span></div>
+        </div>
+        <div class="tg__feed" data-lenis-prevent aria-live="polite" aria-label="Переписка с ботом"></div>
+        <div class="tg__keys"></div>
+        <form class="tg__input">
+          <label class="sr-only" for="tgText">Сообщение боту</label>
+          <input id="tgText" type="text" placeholder="Сообщение" autocomplete="off" maxlength="200">
+          <button type="submit" aria-label="Отправить">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5L21 3l-7.5 18-2.6-7.3z" fill="currentColor"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <div class="botdemo__lead" id="botLead" hidden>
+        <p class="botdemo__label">Так заявку увидит менеджер в Telegram</p>
+        <div class="botdemo__msg" id="botLeadMsg"></div>
+        <p class="botdemo__label">И строкой в Google Таблице</p>
+        <div class="botdemo__sheet">
+          <table>
+            <thead><tr><th>Когда</th><th>Имя</th><th>Телефон</th><th>Экспедиция</th><th>Даты</th><th>Пожелания</th><th>Страница</th></tr></thead>
+            <tbody><tr id="botLeadRow"></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Сайт в разборе -->
+  <section class="layers" data-theme="paper">
+    <div class="wrap layers__grid">
+      <div>
+        <div class="layers__head">
+          <h2 class="h-l">Что внутри каждого сайта</h2>
+          <p class="lede muted">Разберём первый экран «листвы» на слои. За каждый отвечаю я, вам не нужно искать отдельно дизайнера, копирайтера и программиста.</p>
+        </div>
+        <ol class="layers__list">
+          <li data-layer="structure"><h3>Структура</h3><div class="more"><p>Сначала решаем, какие страницы нужны и что на каждой. Посетитель должен за десять секунд понять, что вы предлагаете и куда нажать.</p></div></li>
+          <li data-layer="visual"><h3>Картинка</h3><div class="more"><p>Фотографии и графика под ваш продукт. По ним сайт узнают и запоминают.</p></div></li>
+          <li data-layer="text"><h3>Текст</h3><div class="more"><p>Заголовки простыми словами: что это, для кого и сколько стоит.</p></div></li>
+          <li data-layer="ui"><h3>Меню и кнопки</h3><div class="more"><p>Меню, фильтры, расчёт цены. Всё удобно нажимать пальцем на телефоне.</p></div></li>
+          <li data-layer="motion"><h3>Движение</h3><div class="more"><p>Анимация помогает рассмотреть продукт и не мешает читать. Если у посетителя анимация отключена в системе, сайт остаётся спокойным.</p></div></li>
+          <li data-layer="leads"><h3>Заявки</h3><div class="more"><p>Форма проверяет поля и отправляет заявку в вашу Google Таблицу и на почту. Ни одно обращение не теряется.</p></div></li>
+        </ol>
+      </div>
+
+      <div class="stack-box" aria-hidden="true">
+        <div class="stack">
+          <div class="plane plane--leads">
+            <div class="pl-table">
+              <div class="pl-row"><span>Имя</span><span>Что интересует</span><span>Телефон</span><span>Дата</span></div>
+              <div class="pl-row pl-row--new"><span>Новая заявка</span><i></i><i></i><i></i></div>
+              <div class="pl-row"><i></i><i></i><i></i><i></i></div>
+              <div class="pl-row"><i></i><i></i><i></i><i></i></div>
+              <div class="pl-row"><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="plane plane--structure">
+            <svg viewBox="0 0 160 100" fill="none" stroke="#1f2ee0" stroke-width="0.5" stroke-dasharray="2 1.4">
+              <rect x="6" y="4.5" width="148" height="7" rx="1.5"/>
+              <rect x="6" y="15" width="148" height="40" rx="2"/>
+              <path d="M6 15l148 40M154 15L6 55" stroke-dasharray="none" stroke-opacity="0.35"/>
+              <rect x="6" y="64" width="62" height="26" rx="2"/>
+              <rect x="77" y="74" width="34" height="16" rx="2"/>
+              <rect x="115" y="72" width="18" height="18" rx="2"/>
+              <rect x="136" y="72" width="18" height="18" rx="2"/>
+            </svg>
+          </div>
+          <div class="plane plane--visual">
+            <div class="pv-word">осень</div>
+            <img class="pv-branch" src="sites/listva/assets/img/hero-branch.webp" alt="" loading="lazy">
+          </div>
+          <div class="plane plane--text">
+            <p class="pt-h">Осень, которую хочется запомнить</p>
+            <p class="pt-p">Двенадцать мест, где осень красивее всего, и каждая деталь продумана: от перелёта до столика на закате.</p>
+          </div>
+          <div class="plane plane--ui">
+            <div class="pu-nav"><b>листва.</b><span><span>Туры</span><span>Сезон</span><span>Отзывы</span></span><em>Подобрать тур</em></div>
+            <div class="pu-btn">Смотреть туры</div>
+            <div class="pu-stat">4 800+</div>
+            <div class="pu-stat">4,9</div>
+          </div>
+          <div class="plane plane--motion">
+            <svg viewBox="0 0 160 100" fill="none" stroke="#1f2ee0" stroke-width="0.45" stroke-dasharray="1.6 1.6">
+              <path d="M28 20c6 10-4 18 4 30M72 8c-8 12 6 20-2 34M118 22c8 8-2 20 6 30M142 10c-6 10 4 16-2 28"/>
+            </svg>
+            <img class="pm-leaf" style="left:15%;top:22%" src="sites/listva/assets/img/leaf-1.webp" alt="" loading="lazy">
+            <img class="pm-leaf" style="left:41%;top:9%" src="sites/listva/assets/img/leaf-3.webp" alt="" loading="lazy">
+            <img class="pm-leaf" style="left:71%;top:26%" src="sites/listva/assets/img/leaf-5.webp" alt="" loading="lazy">
+            <img class="pm-leaf" style="left:86%;top:8%" src="sites/listva/assets/img/leaf-6.webp" alt="" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Как идёт работа -->
+  <section class="process" data-theme="paper">
+    <div class="wrap process__grid">
+      <div class="process__head">
+        <h2 class="h-l">От разговора до первых заявок</h2>
+        <p class="lede muted">Четыре шага. На каждом вы видите результат и можете поменять направление.</p>
+        <p class="terms"><strong>Цена и сроки договорные.</strong> Одному хватит одной страницы, другому нужны каталог, анимация и бот. Поэтому сначала разговор, потом точная цифра и дата.</p>
+      </div>
+      <ol class="steps">
+        <li><h3 class="h-m">Знакомство</h3><p>Вы рассказываете о бизнесе и клиентах. Я задаю вопросы и предлагаю, какие страницы нужны.</p></li>
+        <li><h3 class="h-m">Первый экран</h3><p>Собираю главный экран и показываю вам. Здесь проще всего сказать «не то» — и я переделаю, пока не станет «то».</p></li>
+        <li><h3 class="h-m">Весь сайт</h3><p>Достраиваю остальные страницы, анимацию, версию для телефона и форму заявок.</p></li>
+        <li><h3 class="h-m">Запуск</h3><p>Публикую сайт, подключаю заявки к вашей таблице и почте и показываю, где менять тексты и цены.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Отзывы: скрыты, пока список в assets/reviews.js пуст -->
+  <section class="reviews" id="reviews" data-theme="paper" hidden>
+    <div class="wrap reviews__grid">
+      <div class="reviews__head">
+        <h2 class="h-l">Что говорят клиенты</h2>
+        <p class="lede muted">Отзывы слово в слово. По ссылке под каждым можно зайти к клиенту и спросить у него самого.</p>
+      </div>
+      <ul class="quotes"></ul>
+    </div>
+  </section>
+
+  <section class="cta" data-theme="cobalt">
+    <div class="wrap cta__in">
+      <h2 class="h-xl">Какой сайт нужен вам?</h2>
+      <p class="lede">Расскажите, чем занимаетесь. Отвечу, какой сайт или бот подойдёт. Цена и сроки договорные: назову их, когда пойму задачу.</p>
+      <a class="btn" href="contact.html">Обсудить сайт</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="footer" data-theme="cobalt"></footer>
+</body>
+</html>

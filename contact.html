@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru" data-tone="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Обсудить сайт — Арман Мансуров</title>
+  <meta name="description" content="Ответьте на четыре вопроса — получится готовое письмо. Отправьте его удобным способом, и я отвечу, какой сайт вам подойдёт.">
+  <meta name="theme-color" content="#f3f4f6">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f2ee0'/%3E%3Crect x='7' y='9' width='18' height='14' rx='2.5' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script defer src="assets/config.js"></script>
+  <script defer src="assets/site.js"></script>
+  <script defer src="assets/contact.js"></script>
+</head>
+<body data-page="contact" data-theme="paper">
+
+<main id="main">
+  <header class="brief-head" data-theme="paper">
+    <div class="wrap">
+      <h1 class="h-xl">Обсудим ваш сайт</h1>
+      <p class="lede muted">Ответьте на четыре вопроса, и из ответов соберётся готовое письмо. Останется отправить его удобным способом. Цена и сроки договорные: обсудим их в ответе.</p>
+    </div>
+  </header>
+
+  <section class="brief">
+    <div class="wrap brief__grid">
+      <form id="brief" novalidate>
+        <fieldset class="field">
+          <legend>Какой сайт нужен</legend>
+          <div class="chips">
+            <label><input type="radio" name="kind" value="сайт компании на несколько страниц"><span>Сайт компании</span></label>
+            <label><input type="radio" name="kind" value="одна страница под продукт или услугу"><span>Одна страница</span></label>
+            <label><input type="radio" name="kind" value="сайт с 3D и анимацией по прокрутке"><span>С 3D и анимацией</span></label>
+            <label><input type="radio" name="kind" value="чат-бот в мессенджере"><span>Чат-бот</span></label>
+            <label><input type="radio" name="kind" value="пока не знаю, нужен совет"><span>Пока не знаю</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>Какая работа ближе по духу</legend>
+          <div class="chips">
+            <label><input type="radio" name="like" value="листва."><span>листва.</span></label>
+            <label><input type="radio" name="like" value="Halden"><span>Halden</span></label>
+            <label><input type="radio" name="like" value="Vela 14"><span>Vela 14</span></label>
+            <label><input type="radio" name="like" value="хочется чего-то другого"><span>Хочу по-другому</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="about">Чем вы занимаетесь</label>
+          <textarea id="about" name="about" rows="4" placeholder="Например: кофейня в центре города, хотим показывать меню и принимать предзаказы"></textarea>
+        </div>
+
+        <fieldset class="field">
+          <legend>Когда нужен сайт</legend>
+          <div class="chips">
+            <label><input type="radio" name="when" value="как можно скорее"><span>Как можно скорее</span></label>
+            <label><input type="radio" name="when" value="в течение месяца"><span>В течение месяца</span></label>
+            <label><input type="radio" name="when" value="не спешу"><span>Не спешу</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="who">Как вас зовут</label>
+            <input id="who" name="who" type="text" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="reach">Как с вами связаться</label>
+            <input id="reach" name="reach" type="text" placeholder="Телефон, Telegram или почта">
+          </div>
+        </div>
+      </form>
+
+      <aside class="letter" aria-label="Готовое письмо">
+        <p class="letter__text" id="letter" aria-live="polite"></p>
+        <div class="letter__send">
+          <a class="btn" id="sendMail" href="#">Отправить письмом</a>
+          <a class="btn btn--line" id="sendTg" href="#" target="_blank" rel="noopener" hidden>В Telegram</a>
+          <a class="btn btn--line" id="sendWa" href="#" target="_blank" rel="noopener" hidden>В WhatsApp</a>
+          <button class="btn btn--line" id="copy" type="button">Скопировать текст</button>
+        </div>
+        <p class="letter__note" id="note" role="status"></p>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="footer" data-theme="cobalt"></footer>
+</body>
+</html>

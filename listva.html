@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru" data-tone="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>листва. — работа Армана Мансурова</title>
+  <meta name="description" content="Сайт турагентства осенних туров: пять страниц, каталог с фильтрами, расчёт цены и заявки в Google Таблицу. Можно открыть и полистать.">
+  <meta name="theme-color" content="#f1f0f0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f2ee0'/%3E%3Crect x='7' y='9' width='18' height='14' rx='2.5' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script defer src="assets/config.js"></script>
+  <script defer src="assets/site.js"></script>
+  <script defer src="assets/case.js"></script>
+</head>
+<body data-page="listva" data-theme="listva">
+
+<main id="main">
+  <header class="case-head" data-theme="listva">
+    <div class="wrap case-head__in">
+      <h1 class="case-title"><span class="line"><span>листва.</span></span></h1>
+      <div class="case-head__row">
+        <div style="display:grid;gap:16px;align-content:start">
+          <p class="case-kind">Концепт: турагентство осенних туров</p>
+          <p class="lede">Агентство возит из Алматы и Астаны смотреть осень: клёны Киото, виноград Кахетии, шары Каппадокии. Сайт устроен так, чтобы человек выбрал тур, увидел цену и оставил заявку без единого звонка.</p>
+        </div>
+        <dl class="case-facts">
+          <div><dt>Страниц</dt><dd>5: главная, каталог, тур, отзывы, о компании</dd></div>
+          <div><dt>Каталог</dt><dd>8 туров, цены в тенге</dd></div>
+          <div><dt>Заявки</dt><dd>В Google Таблицу и на почту</dd></div>
+          <div><dt>Телефон</dt><dd>Отдельная вёрстка, кнопки под палец</dd></div>
+        </dl>
+      </div>
+    </div>
+  </header>
+
+  <section class="demo">
+    <div class="wrap">
+      <div class="demo__tools">
+        <div class="seg" role="group" aria-label="Размер экрана">
+          <button type="button" data-device="desktop" data-poster="assets/shots/listva-long.webp" aria-pressed="true">Компьютер</button>
+          <button type="button" data-device="phone" data-poster="assets/shots/listva-m.webp" aria-pressed="false">Телефон</button>
+        </div>
+        <a class="link" href="sites/listva/index.html" target="_blank" rel="noopener">Открыть сайт в новой вкладке</a>
+      </div>
+      <div class="demo__stage">
+        <div class="win demo__win" data-src="sites/listva/index.html" data-title="Сайт «листва.»" data-device="desktop" data-state="poster">
+          <div class="win__bar"><i></i><i></i><i></i><span class="win__tab">листва. — осенние туры за рубеж</span></div>
+          <div class="demo__view">
+            <img class="demo__poster" src="assets/shots/listva-long.webp" alt="Первый экран сайта «листва.»">
+            <button class="demo__shield" type="button"><span>Включить сайт</span></button>
+          </div>
+        </div>
+      </div>
+      <p class="demo__hint" aria-live="polite">Это не картинка. Нажмите, и сайт заработает прямо в окне.</p>
+    </div>
+  </section>
+
+  <section class="notes">
+    <div class="wrap">
+      <h2 class="h-l notes__head">Что здесь сделано</h2>
+      <article class="note">
+        <div class="note__text"><h3 class="h-m">Каталог, в котором легко выбрать</h3><p>Туры фильтруются по региону, формату отдыха и месяцу. Ползунок бюджета сразу убирает то, что не по карману, — посетитель не тратит время на лишние карточки.</p></div>
+        <a class="note__pic" href="sites/listva/tours.html" target="_blank" rel="noopener" data-cursor="Открыть"><img src="assets/shots/listva-tours.webp" width="1440" height="900" alt="Каталог туров с фильтрами по региону, формату, месяцу и бюджету" loading="lazy"></a>
+      </article>
+      <article class="note">
+        <div class="note__text"><h3 class="h-m">Страница тура отвечает на все вопросы</h3><p>Длительность, маршрут, даты вылета, размер группы и цена видны сразу под фотографией. Ниже — программа по дням, отели и пакеты с расчётом итоговой суммы.</p></div>
+        <a class="note__pic" href="sites/listva/tour.html?id=japan" target="_blank" rel="noopener" data-cursor="Открыть"><img src="assets/shots/listva-tour.webp" width="1440" height="900" alt="Страница тура в Японию: фотография храма, длительность, маршрут и цена" loading="lazy"></a>
+      </article>
+      <article class="note">
+        <div class="note__text"><h3 class="h-m">Отзывы, которым проще поверить</h3><p>Средняя оценка, распределение по звёздам и фильтры. Видно не только похвалу, но и общую картину.</p></div>
+        <a class="note__pic" href="sites/listva/reviews.html" target="_blank" rel="noopener" data-cursor="Открыть"><img src="assets/shots/listva-reviews.webp" width="1440" height="900" alt="Страница отзывов со средней оценкой" loading="lazy"></a>
+      </article>
+    </div>
+  </section>
+
+  <a class="next" href="halden.html" data-theme="halden">
+    <div class="wrap next__in">
+      <span class="muted">Следующая работа</span>
+      <span class="next__name">Halden</span>
+    </div>
+  </a>
+</main>
+
+<footer class="foot" id="footer" data-theme="cobalt"></footer>
+</body>
+</html>
