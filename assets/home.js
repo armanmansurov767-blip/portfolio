@@ -34,23 +34,54 @@
   });
 
   const BIG = '(min-width: 960px) and (min-height: 620px) and (prefers-reduced-motion: no-preference)';
+  const PHONE = '(max-width: 959px) and (min-height: 560px) and (prefers-reduced-motion: no-preference)';
+  // Низкий экран (телефон боком, маленький ноутбук): сцена не помещается, окна просто листаются
+  const FLAT = '(min-width: 960px) and (max-height: 619px) and (prefers-reduced-motion: no-preference), ' +
+    '(max-width: 959px) and (max-height: 559px) and (prefers-reduced-motion: no-preference)';
   const mm = gsap.matchMedia();
+  // На телефоне адресная строка прячется при прокрутке — без этого сцена бы дёргалась
+  ScrollTrigger.config({ ignoreMobileResize: true });
 
-  /* ---------- Большой экран: закреплённая сцена ---------- */
-  mm.add(BIG, () => {
+  const FRONT = { xPercent: 0, yPercent: 0, z: 0, scale: 1, rotationX: 0, rotationY: 0, rotationZ: 0, '--dim': 0 };
+  const tilt = { rotationY: -24, rotationX: 10, rotationZ: 2.5, scale: 0.9, autoAlpha: 1 };
+  // Компьютер: окна браузера уходят лесенкой в глубину
+  const DESKTOP = {
+    end: '+=760%',
+    parallax: true,
+    intro: [
+      { ...tilt, xPercent: -4, yPercent: 20, z: 0, '--dim': 0 },
+      { ...tilt, xPercent: 17, yPercent: -5, z: -260, '--dim': 0.12 },
+      { ...tilt, xPercent: 38, yPercent: -30, z: -520, '--dim': 0.26 },
+    ],
+    back1: { yPercent: -8, scale: 0.93 },
+    back2: { yPercent: -15.5, scale: 0.86 },
+  };
+  // Телефон: три смартфона веером выглядывают снизу первого экрана
+  const flat = { rotationX: 0, rotationY: 0, autoAlpha: 1 };
+  const MOBILE = {
+    end: '+=640%',
+    parallax: false,
+    intro: [
+      { ...flat, xPercent: 0, yPercent: 36, z: 0, rotationZ: 0, scale: 0.92, '--dim': 0 },
+      { ...flat, xPercent: -46, yPercent: 44, z: -40, rotationZ: -9, scale: 0.84, '--dim': 0.2 },
+      { ...flat, xPercent: 46, yPercent: 44, z: -40, rotationZ: 9, scale: 0.84, '--dim': 0.2 },
+    ],
+    back1: { yPercent: -6, scale: 0.94 },
+    back2: { yPercent: -11.5, scale: 0.88 },
+  };
+
+  /* ---------- Закреплённая сцена: компьютер и телефон, разные только позы окон ---------- */
+  mm.add(BIG, () => pinStage(DESKTOP));
+  mm.add(PHONE, () => pinStage(MOBILE));
+
+  function pinStage(P) {
     stage.classList.add('is-pinned');
     stage.setAttribute('data-nav-clear', '');
     stage.dataset.tone = 'dark';
 
-    const tilt = { rotationY: -24, rotationX: 10, rotationZ: 2.5, scale: 0.9, autoAlpha: 1 };
-    const INTRO = [
-      { ...tilt, xPercent: -4, yPercent: 20, z: 0, '--dim': 0 },
-      { ...tilt, xPercent: 17, yPercent: -5, z: -260, '--dim': 0.12 },
-      { ...tilt, xPercent: 38, yPercent: -30, z: -520, '--dim': 0.26 },
-    ];
-    const FRONT = { xPercent: 0, yPercent: 0, z: 0, scale: 1, rotationX: 0, rotationY: 0, rotationZ: 0, '--dim': 0 };
-    const BACK1 = { ...FRONT, yPercent: -8, scale: 0.93, '--dim': 0.4 };
-    const BACK2 = { ...FRONT, yPercent: -15.5, scale: 0.86, '--dim': 0.62 };
+    const INTRO = P.intro;
+    const BACK1 = { ...FRONT, ...P.back1, '--dim': 0.4 };
+    const BACK2 = { ...FRONT, ...P.back2, '--dim': 0.62 };
     const GONE = { yPercent: -135, rotationZ: -7, rotationX: 16, autoAlpha: 0 };
 
     wins.forEach((w, i) => gsap.set(w, INTRO[i]));
@@ -63,7 +94,7 @@
     const tl = gsap.timeline({
       defaults: { ease: 'power2.inOut' },
       scrollTrigger: {
-        trigger: stage, start: 'top top', end: '+=760%', pin: true, scrub: 0.6,
+        trigger: stage, start: 'top top', end: P.end, pin: true, scrub: 0.6,
         invalidateOnRefresh: true,
       },
     });
@@ -123,13 +154,15 @@
     // Лёгкий параллакс колоды: сдвигаем точку перспективы за указателем
     let mx = 0, my = 0, cx = 0, cy = 0;
     const onMove = (e) => { mx = e.clientX / innerWidth - 0.5; my = e.clientY / innerHeight - 0.5; };
-    window.addEventListener('pointermove', onMove, { passive: true });
     const tick = () => {
       cx += (mx - cx) * 0.06; cy += (my - cy) * 0.06;
       stage.style.setProperty('--mx', cx.toFixed(4));
       stage.style.setProperty('--my', cy.toFixed(4));
     };
-    gsap.ticker.add(tick);
+    if (P.parallax) {
+      window.addEventListener('pointermove', onMove, { passive: true });
+      gsap.ticker.add(tick);
+    }
 
     Site.refreshTone();
     return () => {
@@ -142,10 +175,10 @@
       gsap.set([stage, intro, title, ...wins, ...pages, ...frames, ...copies.flat()], { clearProps: 'all' });
       Site.refreshTone();
     };
-  });
+  }
 
-  /* ---------- Телефон: окна листаются, пока проезжают по экрану ---------- */
-  mm.add('(max-width: 959px) and (prefers-reduced-motion: no-preference), (max-height: 619px) and (prefers-reduced-motion: no-preference)', () => {
+  /* ---------- Низкий экран: окна листаются, пока проезжают по экрану ---------- */
+  mm.add(FLAT, () => {
     pages.forEach((p, i) => {
       if (!p) return;
       gsap.to(p, {

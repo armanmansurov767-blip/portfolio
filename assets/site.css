@@ -284,6 +284,44 @@ html.js .is-ready .intro__foot { opacity: 1; transform: none; }
 .rail i { position: relative; display: block; height: 2px; background: color-mix(in srgb, currentColor 26%, transparent); overflow: hidden; }
 .rail i::after { content: ""; position: absolute; inset: 0; background: currentColor; transform: scaleX(var(--p, 0)); transform-origin: left; }
 
+/* --- Телефон: окна становятся смартфонами с мобильной версией сайтов --- */
+@media (max-width: 959px) {
+  .stage .win { width: min(100%, 300px); justify-self: center; padding: 7px; border-radius: 34px; background: #0b0d17; }
+  .stage .win__bar { justify-content: center; height: 20px; padding: 0; }
+  .stage .win__bar i:not(:first-child), .stage .win__tab { display: none; }
+  .stage .win__bar i { width: 56px; height: 5px; border-radius: 99px; background: rgba(255, 255, 255, 0.28); }
+  .stage .win__view { aspect-ratio: 390 / 760; border-radius: 26px; }
+  .stage .win__view picture { display: block; }
+  .stage .win::after { border-radius: inherit; }
+
+  /* Закреплённая сцена на телефоне: сверху название работы, под ним смартфон */
+  .stage.is-pinned { height: 100vh; height: 100svh; }
+  .stage.is-pinned .intro { justify-content: flex-start; gap: 18px; padding: calc(var(--bar) + 20px) var(--gutter) 0; }
+  .stage.is-pinned .intro__title { max-width: none; font-size: clamp(2.4rem, 11.5vw, 3.6rem); }
+  .stage.is-pinned .intro__foot { max-width: 30rem; margin: 0; }
+  .stage.is-pinned .intro__foot .lede { font-size: 1.0625rem; }
+  .stage.is-pinned .intro__cue { display: none; }
+  .stage.is-pinned .work {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    align-items: start;
+    gap: 14px;
+    padding: calc(var(--bar) + 10px) var(--gutter) 64px;
+    perspective: 1400px;
+  }
+  .stage.is-pinned .work__copy { gap: 6px; max-width: none; }
+  .stage.is-pinned .work__copy > p:not(.work__kind), .stage.is-pinned .work__facts { display: none; }
+  .stage.is-pinned .work__name { font-size: clamp(2.2rem, 10.5vw, 3.2rem); }
+  .stage.is-pinned .work__kind { font-size: 0.9375rem; }
+  .stage.is-pinned .work__links { gap: 10px 20px; margin-top: 4px; }
+  .stage.is-pinned .work__links .btn { min-height: 46px; padding: 0 22px; }
+  .stage.is-pinned .work__links .link { display: none; }
+  .stage.is-pinned .win { margin-top: 12px; }
+  /* Высота смартфона подстраивается под экран: всё помещается без прокрутки внутри сцены */
+  .stage.is-pinned .win { width: min(76vw, 320px, calc((100svh - 290px) / 2.02)); }
+  .stage.is-pinned .rail { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; bottom: 16px; font-size: 0.875rem; }
+}
+
 /* =========================================================
    Главная: сайт в разборе
    ========================================================= */
@@ -567,6 +605,12 @@ html.js .is-ready .case-title .line > span { transform: none; }
 .note__pic { display: block; border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
 .note__pic img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; transition: transform 0.9s var(--ease); }
 .note__pic:hover img { transform: scale(1.03); }
+.note__pic picture { display: block; }
+/* На телефоне в разборе — мобильные снимки в рамке смартфона */
+@media (max-width: 700px) {
+  .note__pic { width: min(100%, 300px); justify-self: center; padding: 7px; border-radius: 34px; background: #0b0d17; box-shadow: none; }
+  .note__pic img { aspect-ratio: 390 / 680; border-radius: 26px; }
+}
 @media (min-width: 900px) {
   .note { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr); gap: clamp(40px, 8vw, 140px); }
 }
