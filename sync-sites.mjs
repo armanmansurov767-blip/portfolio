@@ -5,7 +5,7 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const halden = resolve(here, '..');
+const halden = resolve(here, '..', 'halden');
 const listva = resolve(here, '..', '..');
 const vela = resolve(here, '..', 'vela');
 const out = join(here, 'sites');
