@@ -5,9 +5,9 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const halden = resolve(here, '..', '..', '..', 'Haiden');
-const listva = resolve(here, '..', '..');
-const vela = resolve(here, '..', 'vela');
+const halden = resolve(here, '..', 'Haiden');
+const listva = resolve(here, '..', 'Listva');
+const vela = resolve(here, '..', 'Vela 14');
 const out = join(here, 'sites');
 
 const htmlIn = (dir) => readdirSync(dir).filter((f) => f.endsWith('.html'));
