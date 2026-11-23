@@ -12,6 +12,7 @@
   const poster = win.querySelector('.demo__poster');
   const hint = document.querySelector('.demo__hint');
   const tabs = [...document.querySelectorAll('.seg button')];
+  const t = (window.I18N && window.I18N.t) || ((x) => x);
   const SIZE = { desktop: [1440, 900], phone: [390, 760] };
   let frame = null;
 
@@ -27,19 +28,19 @@
   function play() {
     if (!frame) {
       frame = document.createElement('iframe');
-      frame.src = win.dataset.src;
+      frame.src = (window.I18N && window.I18N.withLang) ? window.I18N.withLang(win.dataset.src) : win.dataset.src; // на языке портфолио
       frame.title = win.dataset.title;
       view.insertBefore(frame, shield);
       fit();
     }
     win.dataset.state = 'live';
-    if (hint) hint.textContent = 'Сайт включён: листайте и нажимайте прямо в окне. Уведите указатель, чтобы листать страницу дальше.';
+    if (hint) hint.textContent = t('Сайт включён: листайте и нажимайте прямо в окне. Уведите указатель, чтобы листать страницу дальше.');
   }
   function pause() {
     if (win.dataset.state !== 'live') return;
     win.dataset.state = 'paused';
-    label.textContent = 'Продолжить';
-    if (hint) hint.textContent = 'Сайт на паузе. Нажмите на окно, чтобы продолжить.';
+    label.textContent = t('Продолжить');
+    if (hint) hint.textContent = t('Сайт на паузе. Нажмите на окно, чтобы продолжить.');
   }
 
   shield.addEventListener('click', play);

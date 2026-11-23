@@ -17,32 +17,47 @@
   const DARK = { cobalt: 1, halden: 1, vela: 1 };
 
   /* ---------- Шапка, меню, подвал ---------- */
+  const I = window.I18N || { lang: 'ru', LANGS: ['ru'], t: (s) => s, set() {} };
+  const t = I.t;
+  const name = t(C.name || '');
   const worksLinks = WORKS.map((w) =>
     `<a href="${w.href}"${w.id === page ? ' aria-current="page"' : ''}>${w.name}</a>`).join('');
 
+  // Переключатель языка: в шапке на компьютере и в меню на телефоне
+  const LANG_NAMES = { ru: ['RU', 'Русский'], en: ['EN', 'English'], kk: ['KZ', 'Қазақша'] };
+  const langSwitch = (cls) =>
+    `<div class="lang ${cls}" role="group" aria-label="${t('Язык')}">` +
+      I.LANGS.map((l) =>
+        `<button type="button" data-lang="${l}" lang="${l}" title="${LANG_NAMES[l][1]}" aria-pressed="${l === I.lang}">${LANG_NAMES[l][0]}</button>`).join('') +
+    '</div>';
+
   body.insertAdjacentHTML('afterbegin',
-    '<a class="skip" href="#main">Перейти к содержимому</a>' +
+    `<a class="skip" href="#main">${t('Перейти к содержимому')}</a>` +
     '<header class="nav">' +
-      `<a class="nav__name" href="index.html">${C.name || ''}</a>` +
-      `<nav class="nav__works" aria-label="Работы">${worksLinks}</nav>` +
-      '<a class="nav__cta" href="contact.html">Обсудить сайт</a>' +
-      '<button class="nav__burger" type="button" aria-expanded="false" aria-controls="menu">Меню</button>' +
+      `<a class="nav__name" href="index.html">${name}</a>` +
+      `<nav class="nav__works" aria-label="${t('Работы')}">${worksLinks}</nav>` +
+      langSwitch('lang--nav') +
+      `<a class="nav__cta" href="contact.html">${t('Обсудить сайт')}</a>` +
+      `<button class="nav__burger" type="button" aria-expanded="false" aria-controls="menu">${t('Меню')}</button>` +
     '</header>' +
-    `<div class="menu" id="menu"><a href="index.html">Главная</a>${worksLinks}` +
-      '<a class="menu__cta link" href="contact.html">Обсудить сайт</a></div>');
+    `<div class="menu" id="menu"><a href="index.html">${t('Главная')}</a>${worksLinks}` +
+      `<a class="menu__cta link" href="contact.html">${t('Обсудить сайт')}</a>${langSwitch('lang--menu')}</div>`);
+
+  document.querySelectorAll('.lang [data-lang]').forEach((b) =>
+    b.addEventListener('click', () => I.set(b.dataset.lang)));
 
   const foot = document.getElementById('footer');
   if (foot) {
     foot.innerHTML =
       '<div class="wrap foot__in">' +
-        `<span>${C.name || ''}, ${new Date().getFullYear()}</span>` +
-        `<nav class="foot__links" aria-label="Подвал">${WORKS.map((w) => `<a class="link" href="${w.href}">${w.name}</a>`).join('')}` +
-          '<a class="link" href="contact.html">Обсудить сайт</a>' +
+        `<span>${name}, ${new Date().getFullYear()}</span>` +
+        `<nav class="foot__links" aria-label="${t('Подвал')}">${WORKS.map((w) => `<a class="link" href="${w.href}">${w.name}</a>`).join('')}` +
+          `<a class="link" href="contact.html">${t('Обсудить сайт')}</a>` +
           (C.whatsapp ? `<a class="link" href="https://wa.me/${C.whatsapp}" target="_blank" rel="noopener">WhatsApp</a>` : '') +
           (C.telegram ? `<a class="link" href="https://t.me/${C.telegram}" target="_blank" rel="noopener">Telegram</a>` : '') +
           (C.email ? `<a class="link" href="mailto:${C.email}">${C.email}</a>` : '') +
         '</nav>' +
-        '<p class="foot__note">Листва, Halden и Vela 14 — концепты: компании, цены и отзывы в них вымышлены. Сами сайты настоящие, их можно открыть и полистать.</p>' +
+        `<p class="foot__note">${t('Листва, Halden и Vela 14 — концепты: компании, цены и отзывы в них вымышлены. Сами сайты настоящие, их можно открыть и полистать.')}</p>` +
       '</div>';
   }
 
@@ -80,7 +95,7 @@
   function setMenu(open) {
     html.toggleAttribute('data-menu', open);
     burger.setAttribute('aria-expanded', String(open));
-    burger.textContent = open ? 'Закрыть' : 'Меню';
+    burger.textContent = open ? t('Закрыть') : t('Меню');
   }
   burger.addEventListener('click', () => setMenu(!html.hasAttribute('data-menu')));
   menu.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
