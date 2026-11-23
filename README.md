@@ -6,6 +6,19 @@
 
 I build websites and Telegram bots for small businesses in Kazakhstan. Instead of showing screenshots, this portfolio lets you use the real sites: every project runs live inside the page, on desktop and phone sizes, with working forms and a working bot.
 
+## Team
+
+| Role | Name |
+|---|---|
+| Captain, lead developer | Arman Mansurov |
+| Contact person and presenter | Diazhan Uzakbay |
+| Product and research | Erken Baigarin |
+| Testing and QA | Timerlan Nazarbayev |
+
+## The hard part
+
+Connecting everything to the real world rather than writing the pages: moving four separate sites and a Telegram bot onto one domain with subdomains, making the visitor's language (Russian, English or Kazakh) follow them across all four sites, and debugging a deployed bot that stayed silent until we found that its token was missing from the right hosting project and Telegram's webhook had never been set.
+
 ## The projects
 
 | Project | Live | What it shows |
