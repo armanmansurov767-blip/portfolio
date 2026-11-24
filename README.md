@@ -12,8 +12,6 @@ I build websites and Telegram bots for small businesses in Kazakhstan. Instead o
 |---|---|
 | Captain, lead developer | Arman Mansurov |
 | Contact person and presenter | Diazhan Uzakbay |
-| Product and research | Erken Baigarin |
-| Testing and QA | Timerlan Nazarbayev |
 
 ## The hard part
 
